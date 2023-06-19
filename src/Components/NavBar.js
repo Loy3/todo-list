@@ -45,12 +45,12 @@ export default function NavBar() {
                                 <button onClick={signOut}>Sign Out</button>
                             </div>
                         </div>
-                        <div className='column2'>
+                        {/* <div className='column2'>
                             <div className="topnav-center" id="topnav-center" align="center">
                                 <a href='' onClick={toHome}>Home</a>
                                 <a href='' onClick={toAdd}>Add a to-do</a>
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

@@ -5,8 +5,12 @@ import profile from "../Assets/Images/BG.png";
 import high from "../Assets/Icons/High.png";
 import medium from "../Assets/Icons/Medium.png";
 import low from "../Assets/Icons/Low.png";
+import close from "../Assets/Icons/cancel.png";
+
 import NavBar from "./NavBar";
-import AddNewList from "./AddNewList";
+import Tasks from "./Tasks";
+
+// import AddNewList from "./AddNewList";
 
 export default function HomePage(props) {
 
@@ -27,8 +31,6 @@ export default function HomePage(props) {
         }
     }, [signedIn, userStat])
 
-
-
     let allUsers = [];
     const stringifiedUser = localStorage.getItem('user');
     if (stringifiedUser === "" || stringifiedUser === null) {
@@ -39,6 +41,32 @@ export default function HomePage(props) {
         allUsers = [allUsers];
     }
 
+    let list = [];
+    const stringifiedList = localStorage.getItem('lists');
+    if (stringifiedList === "" || stringifiedList === null) {
+        localStorage.setItem('lists', JSON.stringify([]));
+        // navigate("/");
+    } else {
+        list = JSON.parse(stringifiedList);
+        // list = [allUsers];
+        // console.log(list);
+    }
+
+    let highP = 0;
+    let medP = 0;
+    let lowP = 0;
+    for (let p = 0; p < list.length; p++) {
+        if (list[p].taskPriority === "High") {
+            highP++;
+        } else
+            if (list[p].taskPriority === "Medium") {
+                medP++;
+            } else
+                if (list[p].taskPriority === "Low") {
+                    lowP++;
+                }
+    }
+
 
 
     const [task, setTask] = useState('');
@@ -46,14 +74,16 @@ export default function HomePage(props) {
     const [taskPriority, setTaskPriority] = useState('');
     const [taskDueDate, setTaskDueDate] = useState('');
     const [userEmail, setUserEmail] = useState('');
-
+    const [taskDueTime, setTaskDueTime] = useState('');
 
     function addNewList() {
         setUserEmail(allUsers[0].userEmail)
 
         console.log(allUsers[0].userEmail);
         // setEmpIdNumber(empIdNumber + 1);
-        props.addNewList(task, taskDescipt, taskPriority, taskDueDate, allUsers[0].userEmail);
+        props.addNewList(task, taskDescipt, taskPriority, taskDueDate, taskDueTime, allUsers[0].userEmail);
+        document.getElementById("taskForm").reset();
+
 
     }
 
@@ -69,8 +99,15 @@ export default function HomePage(props) {
     }
     //end of open and close popup
 
+    // //Delete from list
+    // function deleteTask(event, index) {
 
+    //     list.splice(index, 1);
+    //     localStorage.setItem('lists', JSON.stringify(list));
 
+    //     window.location.reload(false);
+    // }
+    // //End of delete from list
 
     return (
         <div className="home">
@@ -81,77 +118,112 @@ export default function HomePage(props) {
                 <div className="bgBlock"></div>
 
                 <div className="profile">
-                    <div className="card">
-                        <img src={profile} alt="profile" />
-                        <br /><br />
-                        <h1>{allUsers[0].userFirstName + " " + allUsers[0].userLastName}</h1>
-                        <h2>{allUsers[0].userEmail}</h2>
-                        <br /><br /><br />
-                        <h3>{allUsers[0].userPosition}</h3>
-                        <table>
-                            <tbody>
-                                <tr className="prior">
-                                    <td><img src={high} alt="High" width={50} /></td>
-                                    <td>85</td>
-                                </tr>
-                                <tr className="prior">
-                                    <td><img src={medium} alt="High" width={50} /></td>
-                                    <td>85</td>
-                                </tr>
-                                <tr className="prior">
-                                    <td><img src={low} alt="High" width={50} /></td>
-                                    <td>85</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div className="user">
+                        <div className="row">
+                            <div className="column">
+                                <img src={profile} alt="profile" />
+                            </div>
+                            <div className="column">
+                                <h1>{allUsers[0].userFirstName + " " + allUsers[0].userLastName}</h1>
+
+                            </div>
+                            <div className="column" id={"columnLong"}>
+                                <h2>{allUsers[0].userEmail}</h2>
+                                <h3>{allUsers[0].userPosition}</h3>
+                            </div>
+                            <div className="column">
+                                <table>
+                                    <tbody>
+                                        <tr className="prior">
+                                            <td><img src={high} alt="High" width={50} /></td>
+                                            <td>{highP}</td>
+
+                                            <td className="spacing"><img src={medium} alt="High" width={50} /></td>
+                                            <td>{medP}</td>
+
+                                            <td className="spacing"><img src={low} alt="High" width={50} /></td>
+                                            <td>{lowP}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button onClick={openForm}>Add a Task</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
-
-            <div className="row">
-                <div className="column">
-
+            <main>
+                <div className="wrap" id={"tasks"}>
+                    
+                    <Tasks />
                 </div>
-                <div className="column">
+            </main>
 
-                </div>
-            </div>
-            <button onClick={openForm}>Open Form</button>
-            <div id={"popup"} onClick={closeForm}>
+
+            <div id={"popup"}>
                 <div className="mypopup">
                     <div className="box" id={"box"}>
-                        <label>Task</label>
-                        <br />
-                        <input type="text" className="long" placeholder="Add a task" onChange={(event) => setTask(event.target.value)} />
-                        <br />
-                        <label>Task Priority</label>
-                        <br />
-                        <select className="long" onChange={(event) => setTaskPriority(event.target.value)}>
-                            <option hidden={true} >
-                                Select Priority
-                            </option>
-                            <option value={"High"}>High</option>
-                            <option value={"Medium"}>Medium</option>
-                            <option value={"Low"}>Low</option>
+                        <div>
+                            <img src={close} alt="close" onClick={closeForm} />
+                        </div>
+                        <h1>Add a task</h1>
+                        <form id={"taskForm"}>
+                            <br />
+                            <label>Due Date & Time</label>
+                            <br />
+                            <input type="date" className="small" onChange={(event) => setTaskDueDate(event.target.value)} placeholder="dd-mm-yyyy"
+                                min="2023-06-01" max="2030-12-31" />
+                            <input type="time" className="small" onChange={(event) => setTaskDueTime(event.target.value)} placeholder="dd-mm-yyyy" />
+                            <br /><br />
+                            <label>Task</label>
+                            <br />
+                            <input type="text" className="long" placeholder="Add a task" onChange={(event) => setTask(event.target.value)} />
+                            <br />
+                            <select className="long" onChange={(event) => setTaskPriority(event.target.value)}>
+                                <option hidden={true} >
+                                    Select Task Priority
+                                </option>
+                                <option value={"High"}>High</option>
+                                <option value={"Medium"}>Medium</option>
+                                <option value={"Low"}>Low</option>
 
 
-                        </select>
-                        <br />
-                        <label>Task Description</label>
-                        <br />
-                        <textarea type="text" className="long" placeholder="Task description" rows="4" cols="50" onChange={(event) => setTaskDescipt(event.target.value)} />
-                        <br />
-                        <label>Due Date</label>
-                        <br />
-                        <input type="date" className="long" placeholder="dd/mm/yyyy" onChange={(event) => setTaskDueDate(event.target.value)} />
-
-                        <br />
-                        <br />
-                        <button onClick={addNewList}>Add Task</button>
-
+                            </select>
+                            <br />
+                            <textarea type="text" className="long" placeholder="Task description" rows="6" cols="50" onChange={(event) => setTaskDescipt(event.target.value)} />
+                            <br />
+                            <br />
+                            <button onClick={addNewList}>Add Task</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+
+
+// function filterDisplay(event, type) {
+//     // if (type === "All") {
+//     //     window.alert("All")
+
+//     //     list = tasks;
+//     // }
+//     // if (type === "High") {
+//     //     for (let l = 0; l < tasks.length; l++) {
+//     //         if (tasks[l].taskPriority === "High") {
+//     //             list.push(tasks[l])
+//     //         }
+//     //     }
+//     //     console.log(list);
+//     // }
+//     // if (type === "Medium") {
+//     //     window.alert("Medium")
+//     // }
+//     // if (type === "Low") {
+//     //     window.alert("Low")
+//     // }
+
+
+// }

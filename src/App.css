@@ -14,7 +14,9 @@ h3 {
 }
 
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 13px 10px;
   margin: 10px 0px;
   outline: none;
@@ -22,11 +24,12 @@ input, select, textarea {
   background-color: transparent;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: black;
 }
 
-select{
+select {
   width: 175px;
   margin-left: 3px;
 }
@@ -54,7 +57,7 @@ button:hover {
 }
 
 .small {
-  width: 182.5px;
+  width: 183px;
   margin-right: 5px;
 }
 
@@ -220,94 +223,18 @@ button:hover {
 /*end of add list*/
 
 
-/* media */
-
-@media screen and (max-width: 700px) {
-
-  button {
-    width: 420px;
-    padding: 10px;
-    background-color: #181818;
-    color: white;
-    border: none;
-    outline: none;
-
-    cursor: pointer;
-  }
-
-
-
-  .small {
-    width: 100%;
-    margin-right: 0px;
-  }
-
-  .long {
-    width: 100%;
-    margin-left: -7px;
-  }
-
-  /*Sign up*/
-  .nav {
-    padding: 20px 30px;
-    margin: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .signup {
-    padding: 10px 50px;
-  }
-
-  .signup h1 {
-    font-size: 23px;
-  }
-
-
-  .signup .column:first-child {
-    width: 100%;
-    color: black;
-  }
-
-  .signup .column:not(:first-child) {
-    width: 100%;
-    bottom: 0;
-  }
-
-  #bg {
-
-    height: 10vh;
-    position: fixed;
-    bottom: 0 !important;
-    left: 0;
-    top: 90%;
-  }
-
-
-  .signup-form {
-    position: relative;
-    width: 100%;
-
-  }
-
-  /*Sign up*/
-}
-
-/* end of media */
-
 
 /*Nav*/
 nav {
   padding: 0;
   margin: 5px 0;
-  z-index: 1;
+  /* z-index: 1; */
   top: 0;
   width: 100%;
   font-family: 'Kumbh Sans', sans-serif;
 
   position: absolute;
-  z-index: 99;
+  z-index: 1;
 }
 
 .nav-wrap {
@@ -469,26 +396,26 @@ header {
 
 .bgBlock {
   width: 100%;
-  padding: 40px;
   background-color: #1b1b1b;
   opacity: 0.8;
 
   text-align: center;
-  height: 74%;
+  height: 50vh;
 }
 
 .profile {
   background-color: #fff;
-  height: 800px;
+  height: auto;
   width: 300px;
 
   position: absolute;
   z-index: 1;
-  top: 200px;
+  top: 230px;
   left: 40px;
 
   padding: 30px;
   box-shadow: 5px 10px 20px #161515;
+  border-radius: 1em;
 }
 
 .profile img {
@@ -508,15 +435,30 @@ header {
   width: 50px;
 }
 
+
+.profile .column {
+  width: 100%;
+  padding: 0 0 30px 0;
+}
+
+.profile button {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.spacing {
+  padding-left: 30px;
+}
+
 /*End of header*/
 
 
 /* Add */
-.wrap{
+.wrap {
   padding: 50px;
 }
 
-.form{
+.form {
   background-color: #1b1b1b;
 
 }
@@ -524,18 +466,31 @@ header {
 
 .box {
   background-color: #fcf9ee;
-  top: 20px;
-  width:auto;
-  height: 500px;
+  /* top: 20px; */
+  width: auto;
   position: fixed;
   z-index: 99;
-  padding: 30px;
+  padding: 50px;
 }
 
+.box img {
+  cursor: pointer;
+  width: 20px;
+  float: right;
+
+}
+
+.box img:hover {
+  filter: drop-shadow(5px 5px 5px #ff0101);
+}
 
 #popup {
   display: none;
   height: 90%;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 
 }
 
@@ -555,7 +510,7 @@ header {
 
   display: flex;
   justify-content: center;
-  /*align-items: center;*/
+  align-items: center;
 
 }
 
@@ -580,5 +535,524 @@ header {
   margin-left: 50px;
 }
 
+#popup .long {
+  margin-left: 2px;
+  padding: 20px 10px;
+}
+
 
 /* End of add */
+
+/*Home*/
+.home .wrap {
+  margin-left: 28%;
+  padding: 50px 30px;
+}
+
+.displayTasks {
+  margin-top: 50px;
+}
+
+.displayTasks h1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  position: relative;
+}
+
+.displayTasks span {
+  font-size: 16px;
+  padding: 0 10px;
+  margin-top: 10px !important;
+  position: absolute;
+}
+
+.displayTasks span:first-child {
+  font-size: 16px;
+  padding: 30px 10px;
+  margin-top: 20px !important;
+  position: relative;
+}
+
+.displayTasks #myCards {
+  display: block;
+  margin: 80px 0px;
+}
+
+.displayTasks #myCards2 {
+  display: none;
+  margin: 80px 0px;
+}
+
+.displayTasks .column {
+  width: 31%;
+  padding: 0 15px 30px 0;
+}
+
+.displayTasks td {
+  padding: 5px 0px;
+}
+
+.displayTasks .card {
+  position: relative;
+  height: 200px;
+  width: 92%;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 5px 10px 20px #161515;
+}
+
+#step1 .column:first-child {
+  padding-top: 20px;
+  width: 60% !important;
+}
+
+#step1 .column:not(:first-child) {
+  width: 40% !important;
+}
+
+
+#step2 .column {
+  width: 100%;
+  padding: 0px;
+}
+
+#step1,
+#step2 {
+  width: 100%;
+}
+
+#align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card .row {
+  margin: 0;
+}
+
+.card .column {
+  padding: 0;
+}
+
+.card button {
+  width: auto;
+  padding: 5px;
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.card button:hover {
+  text-align: right;
+  background-color: #f8f8f8;
+  border: 2px solid #181818;
+}
+
+.square1,
+.square2,
+.square3 {
+  position: absolute;
+  bottom: -10px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+/* 
+.square1{
+  background-image: url("./Assets/Icons/High.png");
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.square2{
+  background-image: url("./Assets/Icons/Medium.png");
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.square3{
+  background-image: url("./Assets/Icons/Low.png");
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+} */
+
+
+
+
+.card h4 {
+  font-size: 15px;
+}
+
+.card span {
+  color: #c18e5c;
+  border: none;
+
+  font-size: 15px;
+  padding: 0;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+  position: relative;
+}
+
+.displayTasks h3 {
+  text-align: left;
+}
+
+#filter .column:first-child {
+  width: 100%;
+  padding: 10px;
+
+}
+
+#filter .column {
+  width: 23%;
+  padding: 10px;
+
+}
+
+#filter input {
+  width: 200px;
+}
+
+
+#filter button {
+  width: 150px;
+  height: 43px;
+  padding: 10px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#searched {
+  display: none;
+}
+
+#all {
+  display: block;
+}
+
+/*End of home*/
+
+/*Update*/
+.return {
+  margin: 30px;
+}
+
+.return img {
+  cursor: pointer;
+  width: 40px;
+}
+
+.return img:hover {
+  filter: drop-shadow(5px 5px 5px #000000);
+}
+
+.task {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task h1 {
+  font-size: 35px;
+}
+
+.task form {
+  margin-top: 50px;
+}
+
+.task .long {
+
+  margin-left: 0px;
+}
+
+.update .column:first-child {
+  width: 60%;
+}
+
+.update .column:not(:first-child) {
+  width: 40%;
+}
+
+.update #bG {
+  background-image: url("./Assets/Images/BG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+.update .bgBlock {
+  width: 100%;
+  background-color: #1b1b1b;
+  opacity: 0.7;
+
+  text-align: center;
+  height: 100vh;
+}
+
+.bgText {
+  position: absolute;
+  color: white;
+  width: 100%;
+  padding: 50px;
+}
+
+.bgText button {
+  width: 150px;
+}
+
+/* End of update */
+
+
+
+
+
+/* media */
+
+@media screen and (max-width: 700px) {
+
+  button {
+    width: 420px;
+    padding: 10px;
+    background-color: #181818;
+    color: white;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+  }
+
+
+
+  .small {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .long {
+    width: 100%;
+    margin-left: -7px;
+  }
+
+  /*Sign up*/
+  .nav {
+    padding: 20px 30px;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .signup {
+    padding: 10px 50px;
+  }
+
+  .signup h1 {
+    font-size: 23px;
+  }
+
+
+  .signup .column:first-child {
+    width: 100%;
+    color: black;
+  }
+
+  .signup .column:not(:first-child) {
+    width: 100%;
+    bottom: 0;
+  }
+
+  #bg {
+
+    height: 10vh;
+    position: fixed;
+    bottom: 0 !important;
+    left: 0;
+    top: 90%;
+  }
+
+
+  .signup-form {
+    position: relative;
+    width: 100%;
+
+  }
+
+  /*Sign up*/
+
+  /*Header*/
+
+  .profile {
+    height: 180px;
+    width: 85%;
+    top: 195px;
+    left: 10px;
+    padding: 20px;
+  }
+
+  .profile img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .profile h1,
+  .profile h2,
+  .profile h3 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .profile h1 {
+    font-size: 26px;
+    margin-left: -60px;
+    padding-top: 30px;
+  }
+
+  .profile h2 {
+    font-size: 20px;
+  }
+
+  .prior img {
+    border-radius: 0;
+    height: 30px;
+    width: 30px;
+  }
+
+  .profile #columnLong {
+    width: 95%;
+  }
+
+  .profile .column {
+    width: 45%;
+    padding: 0 0 10px 0;
+  }
+
+  .spacing {
+    padding-left: 20px;
+  }
+
+  /*End of heade*/
+
+  /*Home*/
+  .home .wrap {
+    margin-left: 0;
+    padding: 50px 30px;
+  }
+
+  .home button {
+    width: 100%;
+  }
+
+
+  .displayTasks {
+    margin-top: 50px;
+  }
+
+  .displayTasks h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+  }
+
+  .displayTasks .column {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /*end of home*/
+
+  /*Update*/
+  .update .column:first-child {
+    width: 100%;
+  }
+
+  .update .column:not(:first-child) {
+    width: 100%
+  }
+
+
+  .update #bG {
+    background-image: url("./Assets/Images/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30vh;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+
+  .update .bgBlock {
+    width: 100%;
+    background-color: #1b1b1b;
+    opacity: 0.7;
+
+    text-align: center;
+    height: 100%;
+  }
+
+  .bgText {
+    position: absolute;
+    color: white;
+    width: 90%;
+    padding: 20px;
+  }
+
+
+  .task {
+    padding: 30px;
+  }
+
+  .myForm {
+    margin: 30px;
+  }
+
+  #filter button {
+    width: 100% !important;
+  }
+
+  #filter .column {
+    width: 40%;
+    margin-bottom: 20px;
+  }
+
+}
+
+/* end of media */

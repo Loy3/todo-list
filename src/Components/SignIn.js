@@ -32,7 +32,7 @@ export default function SignIn({ setSignIn }) {
     function signInUser() {
         console.log(allUsers);
         for (let u = 0; u < allUsers.length; u++) {
-            if (userEmail === allUsers[u].userEmail && password == allUsers[u].password) {
+            if (userEmail === allUsers[u].userEmail && password === allUsers[u].password) {
                 setSignIn(true);
                 localStorage.setItem('userStatus', JSON.stringify(true));
                 navigate('/home')
@@ -77,7 +77,7 @@ export default function SignIn({ setSignIn }) {
 
                         <br />
                         <br />
-                        <button onClick={signInUser}>Add Employee</button>
+                        <button onClick={signInUser}>Sign In</button>
 
                         <br />
                         <br />

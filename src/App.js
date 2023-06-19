@@ -5,6 +5,7 @@ import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import HomePage from './Components/HomePage';
 import { useEffect, useState } from 'react';
+import UpdateTask from './Components/UpdateTask';
 
 function App() {
   const signedIn = localStorage.getItem("userStatus");
@@ -39,8 +40,8 @@ function App() {
 
   const [newList, setList] = useState(lists);
 
-  const list = (task, taskDescipt, taskPriority, taskDueDate, userEmail) => {
-    setList((newList) => [...newList, { task: task, taskDescipt: taskDescipt, taskPriority: taskPriority, taskDueDate: taskDueDate, userEmail: userEmail }]);
+  const list = (task, taskDescipt, taskPriority, taskDueDate, taskDueTime, userEmail) => {
+    setList((newList) => [...newList, { task: task, taskDescipt: taskDescipt, taskPriority: taskPriority, taskDueDate: taskDueDate, taskDueTime: taskDueTime, userEmail: userEmail }]);
     console.log(newList);
 
   }
@@ -53,8 +54,9 @@ function App() {
       <Routes>
         <Route path='/' element={isSignedIn ? <HomePage addNewList={list} /> : <SignIn setSignIn={setSignIn} />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/home' element={<HomePage addNewList={list}/>} />
-{/* <Route path='/home' element={<HomePage addNewList={list}/>} /> */}
+        <Route path='/home' element={isSignedIn ? <HomePage addNewList={list} /> : <SignIn setSignIn={setSignIn} />} />
+        {/* <Route path='/home' element={<HomePage addNewList={list}/>} /> */}
+        <Route path='/update' element={isSignedIn ? <UpdateTask /> : <SignIn setSignIn={setSignIn} />} />
 
       </Routes>
     </BrowserRouter>

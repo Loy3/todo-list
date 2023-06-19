@@ -28,7 +28,7 @@ export default function SignUp() {
             }
             localStorage.setItem("user", JSON.stringify(user))
         } else {
-            console.log("What");
+            window.alert("Passwords do not match!")
         }
     }
 
