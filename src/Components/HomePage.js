@@ -5,6 +5,8 @@ import profile from "../Assets/Images/BG.png";
 import high from "../Assets/Icons/High.png";
 import medium from "../Assets/Icons/Medium.png";
 import low from "../Assets/Icons/Low.png";
+import overd from "../Assets/Icons/Overdue.png";
+import done from "../Assets/Icons/Done.png";
 import close from "../Assets/Icons/cancel.png";
 
 import NavBar from "./NavBar";
@@ -17,6 +19,7 @@ export default function HomePage(props) {
     const navigate = useNavigate();
 
     const signedIn = localStorage.getItem("userStatus");
+    const [userEmail, setUserEmail] = useState(JSON.parse(localStorage.getItem('userEmail')));
     let userStat = false;
 
     useEffect(() => {
@@ -52,17 +55,22 @@ export default function HomePage(props) {
         // console.log(list);
     }
 
+
+    let doneP = 0;
     let highP = 0;
     let medP = 0;
     let lowP = 0;
+
     for (let p = 0; p < list.length; p++) {
-        if (list[p].taskPriority === "High") {
+        if (list[p].taskPriority === "Done" && list[p].userEmail === userEmail) {
+            doneP++;
+        } else if (list[p].taskPriority === "High" && list[p].userEmail === userEmail) {
             highP++;
         } else
-            if (list[p].taskPriority === "Medium") {
+            if (list[p].taskPriority === "Medium" && list[p].userEmail === userEmail) {
                 medP++;
             } else
-                if (list[p].taskPriority === "Low") {
+                if (list[p].taskPriority === "Low" && list[p].userEmail === userEmail) {
                     lowP++;
                 }
     }
@@ -73,15 +81,15 @@ export default function HomePage(props) {
     const [taskDescipt, setTaskDescipt] = useState('');
     const [taskPriority, setTaskPriority] = useState('');
     const [taskDueDate, setTaskDueDate] = useState('');
-    const [userEmail, setUserEmail] = useState('');
+
     const [taskDueTime, setTaskDueTime] = useState('');
 
     function addNewList() {
-        setUserEmail(allUsers[0].userEmail)
+        //setUserEmail(allUsers[0].userEmail)
 
         console.log(allUsers[0].userEmail);
         // setEmpIdNumber(empIdNumber + 1);
-        props.addNewList(task, taskDescipt, taskPriority, taskDueDate, taskDueTime, allUsers[0].userEmail);
+        props.addNewList(task, taskDescipt, taskPriority, taskDueDate, taskDueTime, userEmail);
         document.getElementById("taskForm").reset();
 
 
@@ -135,7 +143,10 @@ export default function HomePage(props) {
                                 <table>
                                     <tbody>
                                         <tr className="prior">
-                                            <td><img src={high} alt="High" width={50} /></td>
+                                            <td><img src={done} alt="Done" width={50} /></td>
+                                            <td>{doneP}</td>
+
+                                            <td className="spacing"><img src={high} alt="High" width={50} /></td>
                                             <td>{highP}</td>
 
                                             <td className="spacing"><img src={medium} alt="High" width={50} /></td>
@@ -143,6 +154,8 @@ export default function HomePage(props) {
 
                                             <td className="spacing"><img src={low} alt="High" width={50} /></td>
                                             <td>{lowP}</td>
+
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
@@ -154,7 +167,7 @@ export default function HomePage(props) {
             </header>
             <main>
                 <div className="wrap" id={"tasks"}>
-                    
+
                     <Tasks />
                 </div>
             </main>

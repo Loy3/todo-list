@@ -431,8 +431,8 @@ header {
 
 .prior img {
   border-radius: 0;
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
 }
 
 
@@ -447,7 +447,7 @@ header {
 }
 
 .spacing {
-  padding-left: 30px;
+  padding-left: 20px;
 }
 
 /*End of header*/
@@ -595,11 +595,14 @@ header {
 
 .displayTasks .card {
   position: relative;
-  height: 200px;
+  height: 210px;
   width: 92%;
   background-color: #fff;
   padding: 15px;
   box-shadow: 5px 10px 20px #161515;
+}
+.overdue{
+  color: #ff0101;
 }
 
 #step1 .column:first-child {
@@ -722,7 +725,7 @@ header {
 }
 
 #filter .column {
-  width: 23%;
+  width: 18.2%;
   padding: 10px;
 
 }
@@ -850,6 +853,10 @@ header {
     cursor: pointer;
   }
 
+  .topnav h1 {
+    padding-top: 15px;
+    font-size: 26px !important;
+  }
 
 
   .small {
@@ -911,9 +918,9 @@ header {
   /*Header*/
 
   .profile {
-    height: 180px;
+    height: 250px;
     width: 85%;
-    top: 195px;
+    top: 130px;
     left: 10px;
     padding: 20px;
   }
@@ -1045,8 +1052,9 @@ header {
   }
 
   #filter button {
-    width: 100% !important;
+    width: 100px !important;
   }
+
 
   #filter .column {
     width: 40%;

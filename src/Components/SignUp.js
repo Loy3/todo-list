@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import logo from "../Assets/Icons/todo.png"
 
-export default function SignUp() {
+export default function SignUp(props) {
 
     const navigate = useNavigate();
 
@@ -19,14 +19,17 @@ export default function SignUp() {
 
         if (password === confPassword) {
             console.log(userFirstName, userLastName, userEmail, userPosition, password, confPassword);
-            const user = {
-                userFirstName: userFirstName,
-                userLastName: userLastName,
-                userEmail: userEmail,
-                userPosition: userPosition,
-                password: password
-            }
-            localStorage.setItem("user", JSON.stringify(user))
+            // const user = {
+            //     userFirstName: userFirstName,
+            //     userLastName: userLastName,
+            //     userEmail: userEmail,
+            //     userPosition: userPosition,
+            //     password: password
+            // }
+            props.signUpF(userFirstName, userLastName, userEmail, userPosition, password, confPassword);
+            //localStorage.setItem("user", JSON.stringify(user))
+            window.alert("To see if you have signed up please sign in.")
+            navigate("/")
         } else {
             window.alert("Passwords do not match!")
         }

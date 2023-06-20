@@ -56,13 +56,14 @@ export default function UpdateTask() {
 
         console.log(list[taskId]);
         localStorage.setItem('lists', JSON.stringify(list));
-
+        localStorage.setItem("task", JSON.stringify([]))
         navigate("/home")
     }
 
     function cancelUp() {
-        navigate("/home")
         localStorage.setItem("task", JSON.stringify([]))
+        navigate("/home")
+        
     }
 
 
@@ -103,6 +104,7 @@ export default function UpdateTask() {
                                         <option value={"High"}>High</option>
                                         <option value={"Medium"}>Medium</option>
                                         <option value={"Low"}>Low</option>
+                                        <option value={"Done"}>Done</option>
                                     </select>
                                     <br />
                                     <textarea type="text" className="long" name="taskDescipt" placeholder="Task description" rows="6" cols="50" onChange={handleChange} />

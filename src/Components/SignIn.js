@@ -18,13 +18,13 @@ export default function SignIn({ setSignIn }) {
 
 
     let allUsers = [];
-    const stringifiedUser = localStorage.getItem('user');
+    const stringifiedUser = localStorage.getItem('users');
     if (stringifiedUser === "" || stringifiedUser === null) {
-        localStorage.setItem('user', JSON.stringify([]));
-        // navigate("/");
+        localStorage.setItem('users', JSON.stringify([]));
+        navigate("/signUp");
     } else {
         allUsers = JSON.parse(stringifiedUser);
-        allUsers = [allUsers];
+        // allUsers = [allUsers];
     }
 
 
@@ -35,7 +35,9 @@ export default function SignIn({ setSignIn }) {
             if (userEmail === allUsers[u].userEmail && password === allUsers[u].password) {
                 setSignIn(true);
                 localStorage.setItem('userStatus', JSON.stringify(true));
-                navigate('/home')
+                localStorage.setItem('userEmail', JSON.stringify(allUsers[u].userEmail));
+                localStorage.setItem('user', JSON.stringify(allUsers[u]));
+                navigate('/')
             }
         }
 

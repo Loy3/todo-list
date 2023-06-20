@@ -15,6 +15,10 @@ export default function NavBar() {
 
     function signOut() {
         localStorage.setItem('userStatus', JSON.stringify(false));
+        localStorage.setItem('user', JSON.stringify(""));
+        localStorage.setItem('userEmail', JSON.stringify(""));
+        
+
         navigate("/");
         window.location.reload();
     }
