@@ -14,7 +14,7 @@ export default function Tasks() {
     const navigate = useNavigate();
 
     let list = [];
-
+let type = "all";
 
     // var currentDate = new Date().toJSON().slice(0, 10);
     var currentDate = new Date();
@@ -210,7 +210,7 @@ export default function Tasks() {
                                             {d1 > d2 && data.taskPriority === "High" ? <div className="square1"><img src={high} alt="High" width={50} /></div> : <div className="square1"><img src={overd} alt="High" width={50} /></div>}
                                             {d1 < d2 && data.taskPriority === "Medium" ? <div className="square2"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
                                             {d1 < d2 && data.taskPriority === "Low" ? <div className="square3"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {d1 < d2 && data.taskPriority === "Done" ? <div className="square3"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
+                                            {data.taskPriority === "Done" ? <div className="square3"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
                                             {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square3"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
                                         </div>
                                     </div>

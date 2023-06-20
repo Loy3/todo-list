@@ -55,35 +55,37 @@ export default function SignIn({ setSignIn }) {
                     <div className="nav">
                         <img src={logo} alt="logo" />
                     </div>
-                    <div className="signup-form">
+                    <div className="align-To-center">
+                        <div className="signup-form">
 
 
-                        <h1>Sign Up to Create an Account</h1>
-                        <h3 className="gray">This is the first step to your list.</h3>
+                            <h1>Sign Up to Create an Account</h1>
+                            <h3 className="gray">This is the first step to your list.</h3>
 
-                        <br />
+                            <br />
 
 
-                        <input type="email" className="long" placeholder="Email Address" onChange={(event) => setUserEmail(event.target.value)} />
-                        <br />
-                        <div className="myPassword">
-                            <input type={showHidePassword ? "text" : "password"} className="long" placeholder={showHidePassword ? "Enter Password" : "* * * * * * * * * *"} onChange={(event) => setPassword(event.target.value)} />
-                            <img
-                                title={showHidePassword ? "Hide password" : "Show password"}
-                                src={showHidePassword ? show : hide}
-                                onClick={() => setShowHidePassword(prevState => !prevState)}
+                            <input type="email" className="long" placeholder="Email Address" onChange={(event) => setUserEmail(event.target.value)} />
+                            <br />
+                            <div className="myPassword">
+                                <input type={showHidePassword ? "text" : "password"} className="long" placeholder={showHidePassword ? "Enter Password" : "* * * * * * * * * *"} onChange={(event) => setPassword(event.target.value)} />
+                                <img
+                                    title={showHidePassword ? "Hide password" : "Show password"}
+                                    src={showHidePassword ? show : hide}
+                                    onClick={() => setShowHidePassword(prevState => !prevState)}
 
-                                alt="Hide"
-                            />
+                                    alt="Hide"
+                                />
+                            </div>
+
+                            <br />
+                            <br />
+                            <button onClick={signInUser}>Sign In</button>
+
+                            <br />
+                            <br />
+                            <h3>Don't have an account? <a onClick={toSignUp}>Sign Up</a></h3>
                         </div>
-
-                        <br />
-                        <br />
-                        <button onClick={signInUser}>Sign In</button>
-
-                        <br />
-                        <br />
-                        <h3>Don't have an account? <a onClick={toSignUp}>Sign Up</a></h3>
                     </div>
 
                 </div>

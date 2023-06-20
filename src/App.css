@@ -57,13 +57,13 @@ button:hover {
 }
 
 .small {
-  width: 183px;
+  width: 180px;
   margin-right: 5px;
 }
 
 .long {
   width: 390px;
-  margin-left: -7px;
+  margin-left: 0px;
 }
 
 
@@ -125,20 +125,23 @@ button:hover {
   position: absolute;
   color: black;
   width: 450px;
-  /* height: 500px; */
+  /* height: 500px;
   text-align: center;
   /* height: auto; */
   /* padding: 10px; */
 
-  margin-top: 130px;
+  /* margin-top: 130px; */
 
 
 }
 
-#center {
+.align-To-center {
+  padding: 0px;
   display: flex;
   justify-content: center;
-  margin-top: 0px;
+  align-items: center;
+
+  margin-top: 50vh;
 }
 
 /* .bgBlock {
@@ -208,7 +211,7 @@ button:hover {
   cursor: pointer;
   position: absolute;
   width: 25px;
-  right: 35px;
+  right: 45px;
   top: 20px;
 }
 
@@ -465,7 +468,7 @@ header {
 
 
 .box {
-  background-color: #fcf9ee;
+  background-color: #f8f8f8;
   /* top: 20px; */
   width: auto;
   position: fixed;
@@ -484,7 +487,7 @@ header {
   filter: drop-shadow(5px 5px 5px #ff0101);
 }
 
-#popup {
+#popup, #popup2 {
   display: none;
   height: 90%;
 
@@ -498,7 +501,7 @@ header {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   background-color: rgba(19, 19, 19, 0.788);
@@ -595,7 +598,7 @@ header {
 
 .displayTasks .card {
   position: relative;
-  height: 210px;
+  height: 220px;
   width: 92%;
   background-color: #fff;
   padding: 15px;
@@ -843,7 +846,7 @@ header {
 @media screen and (max-width: 700px) {
 
   button {
-    width: 420px;
+    width: 100%;
     padding: 10px;
     background-color: #181818;
     color: white;
@@ -860,14 +863,17 @@ header {
 
 
   .small {
-    width: 100%;
-    margin-right: 0px;
+    margin:10px 0px;
+  }
+  input{
+    width: 94% !important;
+    margin: 10px;
   }
 
   .long {
-    width: 100%;
-    margin-left: -7px;
+    margin-left: 0px;
   }
+  
 
   /*Sign up*/
   .nav {
@@ -879,7 +885,7 @@ header {
   }
 
   .signup {
-    padding: 10px 50px;
+    padding: 10px;
   }
 
   .signup h1 {
@@ -912,6 +918,12 @@ header {
     width: 100%;
 
   }
+  .align-To-center {
+   margin-top: 15vh; 
+   padding: 30px;
+   justify-content: flex-start;
+  }
+
 
   /*Sign up*/
 
@@ -997,6 +1009,26 @@ header {
     margin-bottom: 10px;
   }
 
+  
+#filter input {
+  width: 200px !important;
+  margin: 0;
+}
+
+.box {
+  background-color: #f8f8f8;
+  /* top: 20px; */
+  width: auto;
+  position: fixed;
+  z-index: 99;
+  margin: 0px;
+}
+.box textarea{
+  width: 94%;
+}
+.mypopup{
+  align-items: flex-end;
+}
   /*end of home*/
 
   /*Update*/

@@ -5,7 +5,7 @@ import profile from "../Assets/Images/BG.png";
 import high from "../Assets/Icons/High.png";
 import medium from "../Assets/Icons/Medium.png";
 import low from "../Assets/Icons/Low.png";
-import overd from "../Assets/Icons/Overdue.png";
+// import overd from "../Assets/Icons/Overdue.png";
 import done from "../Assets/Icons/Done.png";
 import close from "../Assets/Icons/cancel.png";
 
@@ -51,8 +51,6 @@ export default function HomePage(props) {
         // navigate("/");
     } else {
         list = JSON.parse(stringifiedList);
-        // list = [allUsers];
-        // console.log(list);
     }
 
 
@@ -105,18 +103,7 @@ export default function HomePage(props) {
         document.getElementById("popup").style.display = "none";
         // window.location.reload();
     }
-    //end of open and close popup
-
-    // //Delete from list
-    // function deleteTask(event, index) {
-
-    //     list.splice(index, 1);
-    //     localStorage.setItem('lists', JSON.stringify(list));
-
-    //     window.location.reload(false);
-    // }
-    // //End of delete from list
-
+    
     return (
         <div className="home">
             <NavBar />
@@ -155,7 +142,7 @@ export default function HomePage(props) {
                                             <td className="spacing"><img src={low} alt="High" width={50} /></td>
                                             <td>{lowP}</td>
 
-                                            
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -176,38 +163,40 @@ export default function HomePage(props) {
             <div id={"popup"}>
                 <div className="mypopup">
                     <div className="box" id={"box"}>
-                        <div>
-                            <img src={close} alt="close" onClick={closeForm} />
+                        <div className="box-content">
+                            <div>
+                                <img src={close} alt="close" onClick={closeForm} />
+                            </div>
+                            <h1>Add a task</h1>
+                            <form id={"taskForm"}>
+                                <br />
+                                <label>Due Date & Time</label>
+                                <br />
+                                <input type="date" className="small" onChange={(event) => setTaskDueDate(event.target.value)} placeholder="dd-mm-yyyy"
+                                    min="2023-06-01" max="2030-12-31" />
+                                <input type="time" className="small" onChange={(event) => setTaskDueTime(event.target.value)} placeholder="dd-mm-yyyy" />
+                                <br /><br />
+                                <label>Task</label>
+                                <br />
+                                <input type="text" className="long" placeholder="Add a task" onChange={(event) => setTask(event.target.value)} />
+                                <br />
+                                <select className="long" onChange={(event) => setTaskPriority(event.target.value)}>
+                                    <option hidden={true} >
+                                        Select Task Priority
+                                    </option>
+                                    <option value={"High"}>High</option>
+                                    <option value={"Medium"}>Medium</option>
+                                    <option value={"Low"}>Low</option>
+
+
+                                </select>
+                                <br />
+                                <textarea type="text" className="long" placeholder="Task description" rows="6" cols="50" onChange={(event) => setTaskDescipt(event.target.value)} />
+                                <br />
+                                <br />
+                                <button onClick={addNewList}>Add Task</button>
+                            </form>
                         </div>
-                        <h1>Add a task</h1>
-                        <form id={"taskForm"}>
-                            <br />
-                            <label>Due Date & Time</label>
-                            <br />
-                            <input type="date" className="small" onChange={(event) => setTaskDueDate(event.target.value)} placeholder="dd-mm-yyyy"
-                                min="2023-06-01" max="2030-12-31" />
-                            <input type="time" className="small" onChange={(event) => setTaskDueTime(event.target.value)} placeholder="dd-mm-yyyy" />
-                            <br /><br />
-                            <label>Task</label>
-                            <br />
-                            <input type="text" className="long" placeholder="Add a task" onChange={(event) => setTask(event.target.value)} />
-                            <br />
-                            <select className="long" onChange={(event) => setTaskPriority(event.target.value)}>
-                                <option hidden={true} >
-                                    Select Task Priority
-                                </option>
-                                <option value={"High"}>High</option>
-                                <option value={"Medium"}>Medium</option>
-                                <option value={"Low"}>Low</option>
-
-
-                            </select>
-                            <br />
-                            <textarea type="text" className="long" placeholder="Task description" rows="6" cols="50" onChange={(event) => setTaskDescipt(event.target.value)} />
-                            <br />
-                            <br />
-                            <button onClick={addNewList}>Add Task</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -215,28 +204,3 @@ export default function HomePage(props) {
     )
 }
 
-
-
-// function filterDisplay(event, type) {
-//     // if (type === "All") {
-//     //     window.alert("All")
-
-//     //     list = tasks;
-//     // }
-//     // if (type === "High") {
-//     //     for (let l = 0; l < tasks.length; l++) {
-//     //         if (tasks[l].taskPriority === "High") {
-//     //             list.push(tasks[l])
-//     //         }
-//     //     }
-//     //     console.log(list);
-//     // }
-//     // if (type === "Medium") {
-//     //     window.alert("Medium")
-//     // }
-//     // if (type === "Low") {
-//     //     window.alert("Low")
-//     // }
-
-
-// }
