@@ -143,7 +143,7 @@ export default function Tasks() {
             <div id={"all"}>
                 <div className="row" id={"filter"}>
                     <div className="column" id={"search"}>
-                        <input type="text" placeholder="Search for task " onChange={(event) => setSearchTask(event.target.value)} />
+                        <input type="text" placeholder="Search for task by priority" onChange={(event) => setSearchTask(event.target.value)} />
                         <button onClick={search}>Search</button>
                         <br /><br />
                     </div>
