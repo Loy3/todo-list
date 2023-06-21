@@ -211,7 +211,7 @@ button:hover {
   cursor: pointer;
   position: absolute;
   width: 25px;
-  right: 45px;
+  right: 55px;
   top: 20px;
 }
 
@@ -487,7 +487,8 @@ header {
   filter: drop-shadow(5px 5px 5px #ff0101);
 }
 
-#popup, #popup2 {
+#popup,
+#popup2 {
   display: none;
   height: 90%;
 
@@ -582,6 +583,11 @@ header {
   margin: 80px 0px;
 }
 
+.displayTasks #viewbyprior{
+  display: none;
+  margin: 80px 0px;
+}
+
 .displayTasks #myCards2 {
   display: none;
   margin: 80px 0px;
@@ -604,7 +610,8 @@ header {
   padding: 15px;
   box-shadow: 5px 10px 20px #161515;
 }
-.overdue{
+
+.overdue {
   color: #ff0101;
 }
 
@@ -706,17 +713,6 @@ header {
   font-size: 15px;
 }
 
-.card span {
-  color: #c18e5c;
-  border: none;
-
-  font-size: 15px;
-  padding: 0;
-  margin-top: 0px !important;
-  margin-left: 0px !important;
-  position: relative;
-}
-
 .displayTasks h3 {
   text-align: left;
 }
@@ -728,9 +724,16 @@ header {
 }
 
 #filter .column {
-  width: 18.2%;
+  width: 15%;
   padding: 10px;
 
+}
+.warning{
+  font-size: 11px !important;
+  color: #7e7e7e;
+  padding: 0;
+  margin-top: 5px !important;
+  position: unset;
 }
 
 #filter input {
@@ -863,9 +866,10 @@ header {
 
 
   .small {
-    margin:10px 0px;
+    margin: 10px 0px;
   }
-  input{
+
+  input {
     width: 94% !important;
     margin: 10px;
   }
@@ -873,7 +877,7 @@ header {
   .long {
     margin-left: 0px;
   }
-  
+
 
   /*Sign up*/
   .nav {
@@ -903,31 +907,46 @@ header {
     bottom: 0;
   }
 
-  #bg {
-
-    height: 10vh;
-    position: fixed;
-    bottom: 0 !important;
-    left: 0;
-    top: 90%;
+  .myPassword img {
+    right: 15px;
   }
 
+  #bg {
+    display: none;
 
+  }
+
+#signin .column:not(:first-child){
+  float: none;
+ position: fixed;
+ top: 0;
+}
   .signup-form {
     position: relative;
     width: 100%;
 
   }
+
   .align-To-center {
-   margin-top: 15vh; 
-   padding: 30px;
-   justify-content: flex-start;
+    margin-top: 15vh;
+    padding: 30px;
+    justify-content: flex-start;
   }
-
-
   /*Sign up*/
 
   /*Header*/
+  header {    
+    height: 55vh;
+  }
+  
+  .bgBlock {
+    width: 100%;
+    background-color: #1b1b1b;
+    opacity: 0.8;
+  
+    text-align: center;
+    height: 55vh;
+  }
 
   .profile {
     height: 250px;
@@ -1009,26 +1028,29 @@ header {
     margin-bottom: 10px;
   }
 
-  
-#filter input {
-  width: 200px !important;
-  margin: 0;
-}
 
-.box {
-  background-color: #f8f8f8;
-  /* top: 20px; */
-  width: auto;
-  position: fixed;
-  z-index: 99;
-  margin: 0px;
-}
-.box textarea{
-  width: 94%;
-}
-.mypopup{
-  align-items: flex-end;
-}
+  #filter input {
+    width: 200px !important;
+    margin: 0;
+  }
+
+  .box {
+    background-color: #f8f8f8;
+    /* top: 20px; */
+    width: auto;
+    position: fixed;
+    z-index: 99;
+    margin: 0px;
+  }
+
+  .box textarea {
+    width: 94%;
+  }
+
+  .mypopup {
+    align-items: flex-end;
+  }
+
   /*end of home*/
 
   /*Update*/
@@ -1047,10 +1069,7 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     height: 30vh;
-    position: absolute;
-    top: 100%;
-    right: 0;
-
+    position: unset;
 
     display: flex;
     justify-content: flex-start;
@@ -1076,11 +1095,22 @@ header {
 
 
   .task {
-    padding: 30px;
+    padding: 10px !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .task textarea {
+    width: 95% !important;
+  }
+
+  .task .long {
+    width: 100%;
   }
 
   .myForm {
-    margin: 30px;
+    padding: 30px;
   }
 
   #filter button {

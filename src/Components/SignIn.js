@@ -48,7 +48,7 @@ export default function SignIn({ setSignIn }) {
     }
 
     return (
-        <div className="signup">
+        <div className="signup" id={"signin"}>
 
             <div className="row">
                 <div className="column" id={"center"}>
@@ -59,8 +59,8 @@ export default function SignIn({ setSignIn }) {
                         <div className="signup-form">
 
 
-                            <h1>Sign Up to Create an Account</h1>
-                            <h3 className="gray">This is the first step to your list.</h3>
+                            <h1 align="center">Welcome back!</h1>
+                            <h3 className="gray">Sign in to your account.</h3>
 
                             <br />
 

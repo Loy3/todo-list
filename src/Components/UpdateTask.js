@@ -90,16 +90,16 @@ export default function UpdateTask() {
                                     <br />
                                     <label>Due Date & Time</label>
                                     <br />
-                                    <input type="date" className="small" name="taskDueDate" onChange={handleChange} placeholder="dd-mm-yyyy"
+                                    <input type="date" className="small" name="taskDueDate" onChange={handleChange} placeholder={`Task: ${data.taskDueDate}`}
                                         min="2023-06-01" max="2030-12-31" />
-                                    <input type="time" className="small" name="taskDueTime" onChange={handleChange} placeholder="dd-mm-yyyy" />
+                                    <input type="time" className="small" name="taskDueTime" onChange={handleChange}placeholder={`Task: ${data.taskDueTime}`} />
                                     <br />
 
                                     <input type="text" className="long" name="task" placeholder={`Task: ${data.task}`} onChange={handleChange} />
                                     <br />
                                     <select className="long" name="taskPriority" onChange={handleChange}>
                                         <option hidden={true} >
-                                            Select Task Priority
+                                        {`Current Priority: ${data.taskPriority}`}
                                         </option>
                                         <option value={"High"}>High</option>
                                         <option value={"Medium"}>Medium</option>

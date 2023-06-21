@@ -85,7 +85,7 @@ export default function HomePage(props) {
     function addNewList() {
         //setUserEmail(allUsers[0].userEmail)
 
-        console.log(allUsers[0].userEmail);
+        // console.log(allUsers[0].userEmail);
         // setEmpIdNumber(empIdNumber + 1);
         props.addNewList(task, taskDescipt, taskPriority, taskDueDate, taskDueTime, userEmail);
         document.getElementById("taskForm").reset();

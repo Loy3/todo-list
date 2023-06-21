@@ -6,6 +6,7 @@ import SignUp from './Components/SignUp';
 import HomePage from './Components/HomePage';
 import { useEffect, useState } from 'react';
 import UpdateTask from './Components/UpdateTask';
+import ViewByType from './Components/ViewByType';
 
 function App() {
   const signedIn = localStorage.getItem("userStatus");
@@ -19,7 +20,6 @@ function App() {
 
   const [isSignedIn, setSignIn] = useState(userStat);
   const status = localStorage.getItem("user");
-  console.log(isSignedIn);
   // const userStatus = () => {
   //   setSignIn((isSignedIn) => [isSignedIn]);
   //   console.log(isSignedIn);
@@ -29,13 +29,15 @@ function App() {
   //   setSignIn(true)
   // }, [isSignedIn])
 
-  let lists = "";
+  let lists = [];
   const stringifiedlist = localStorage.getItem('lists');
   if (stringifiedlist === "" || stringifiedlist === null) {
+    localStorage.clear();
     localStorage.setItem('lists', JSON.stringify([]));
   } else {
     lists = JSON.parse(stringifiedlist);
   }
+  
 
   let users = "";
   const stringifiedUser = localStorage.getItem('users');
@@ -76,6 +78,7 @@ function App() {
         <Route path='/home' element={isSignedIn ? <HomePage addNewList={list} /> : <SignIn setSignIn={setSignIn} />} />
         {/* <Route path='/home' element={<HomePage addNewList={list}/>} /> */}
         <Route path='/update' element={isSignedIn ? <UpdateTask /> : <SignIn setSignIn={setSignIn} />} />
+        <Route path='/view' element={isSignedIn ? <ViewByType /> : <SignIn setSignIn={setSignIn} />} />
 
       </Routes>
     </BrowserRouter>
