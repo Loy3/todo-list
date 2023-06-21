@@ -5,15 +5,6 @@ export default function NavBar() {
 
     const navigate = useNavigate();
 
-   /* function toHome() {
-        navigate("/home");
-    }
-
-
-    function toAdd() {
-        navigate("/add");
-    }*/
-
     function signOut() {
         localStorage.setItem('userStatus', JSON.stringify(false));
         localStorage.setItem('user', JSON.stringify(""));
@@ -62,13 +53,7 @@ export default function NavBar() {
                                 <button onClick={openForm2}>Sign Out</button>
                             </div>
                         </div>
-                        {/* <div className='column2'>
-                            <div className="topnav-center" id="topnav-center" align="center">
-                                <a href='' onClick={toHome}>Home</a>
-                                <a href='' onClick={toAdd}>Add a to-do</a>
-                            </div>
-                        </div> */}
-
+                     
                     </div>
                 </div>
             </div>

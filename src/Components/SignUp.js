@@ -19,13 +19,7 @@ export default function SignUp(props) {
 
         if (password === confPassword) {
             console.log(userFirstName, userLastName, userEmail, userPosition, password, confPassword);
-            // const user = {
-            //     userFirstName: userFirstName,
-            //     userLastName: userLastName,
-            //     userEmail: userEmail,
-            //     userPosition: userPosition,
-            //     password: password
-            // }
+            
             props.signUpF(userFirstName, userLastName, userEmail, userPosition, password, confPassword);
             //localStorage.setItem("user", JSON.stringify(user))
             window.alert("To see if you have signed up please sign in.")
@@ -61,20 +55,7 @@ export default function SignUp(props) {
                             <input type="text" className="small" placeholder="Last Name" onChange={(event) => setUserLastName(event.target.value)} />
                             <br />
                             <input type="email" className="small" placeholder="Email Address" onChange={(event) => setUserEmail(event.target.value)} />
-                            {/* <select onChange={(event) => setPosition(event.target.value)}>
-                                <option hidden={true} >
-                                    Select Category
-                                </option>
-                                <option value={"Back-End Developer"}>Back-End Developer</option>
-                                <option value={"Business Analyst"}>Business Analyst</option>
-                                <option value={"Front-End Developer"}>Front-End Developer</option>
-                                <option value={"Full-Stack Developer"}>Full-Stack Developer</option>
-                                <option value={"Scrum Master"}>Scrum Master</option>
-                                <option value={"Team Leader"}>Team Leader</option>
-                                <option value={"Tester"}>Tester</option>
-
-                            </select> */}
-
+                           
                             <input type="text" className="small" placeholder="What do you do?" onChange={(event) => setPosition(event.target.value)} />
                             <br />
                             <input type="password" className="long" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />

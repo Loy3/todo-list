@@ -19,15 +19,6 @@ function App() {
   }
 
   const [isSignedIn, setSignIn] = useState(userStat);
-  const status = localStorage.getItem("user");
-  // const userStatus = () => {
-  //   setSignIn((isSignedIn) => [isSignedIn]);
-  //   console.log(isSignedIn);
-
-  // }
-  // useEffect(() => {
-  //   setSignIn(true)
-  // }, [isSignedIn])
 
   let lists = [];
   const stringifiedlist = localStorage.getItem('lists');
@@ -61,7 +52,6 @@ function App() {
 
 
   const [newUsers, setUser] = useState(users);
-  // userFirstName, userLastName, userEmail, userPosition, password, confPassword
   const nUser = (userFirstName, userLastName, userEmail, userPosition, password) => {
     setUser((newUsers) => [...newUsers, { userFirstName: userFirstName, userLastName: userLastName, userEmail: userEmail, userPosition: userPosition, password: password }]);
     console.log(newUsers);
@@ -75,10 +65,10 @@ function App() {
       <Routes>
         <Route path='/' element={isSignedIn ? <HomePage addNewList={list} /> : <SignIn setSignIn={setSignIn} />} />
         <Route path='/signup' element={<SignUp signUpF={nUser} />} />
-        <Route path='/home' element={isSignedIn ? <HomePage addNewList={list} /> : <SignIn setSignIn={setSignIn} />} />
+        <Route path='/home' element={isSignedIn ? <HomePage addNewList={list} /> : <Navigate to="/" />} />
         {/* <Route path='/home' element={<HomePage addNewList={list}/>} /> */}
-        <Route path='/update' element={isSignedIn ? <UpdateTask /> : <SignIn setSignIn={setSignIn} />} />
-        <Route path='/view' element={isSignedIn ? <ViewByType /> : <SignIn setSignIn={setSignIn} />} />
+        <Route path='/update' element={isSignedIn ? <UpdateTask /> : <Navigate to="/" />} />
+        <Route path='/view' element={isSignedIn ? <ViewByType /> : <Navigate to="/" />} />
 
       </Routes>
     </BrowserRouter>

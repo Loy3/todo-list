@@ -21,12 +21,6 @@ export default function UpdateTask() {
     const stringifiedList = localStorage.getItem('lists');
     list = JSON.parse(stringifiedList);
 
-    // if (stringifiedList === "" || stringifiedList === null) {
-    //     localStorage.setItem('lists', JSON.stringify([]));
-    // } else {
-    //     list = JSON.parse(stringifiedEmp);
-    // }
-
     useEffect(() => {
         for (let l = 0; l < list.length; l++) {
             if (displayTask[0].task === list[l].task) {
@@ -63,7 +57,7 @@ export default function UpdateTask() {
     function cancelUp() {
         localStorage.setItem("task", JSON.stringify([]))
         navigate("/home")
-        
+
     }
 
 
@@ -92,14 +86,14 @@ export default function UpdateTask() {
                                     <br />
                                     <input type="date" className="small" name="taskDueDate" onChange={handleChange} placeholder={`Task: ${data.taskDueDate}`}
                                         min="2023-06-01" max="2030-12-31" />
-                                    <input type="time" className="small" name="taskDueTime" onChange={handleChange}placeholder={`Task: ${data.taskDueTime}`} />
+                                    <input type="time" className="small" name="taskDueTime" onChange={handleChange} placeholder={`Task: ${data.taskDueTime}`} />
                                     <br />
 
                                     <input type="text" className="long" name="task" placeholder={`Task: ${data.task}`} onChange={handleChange} />
                                     <br />
                                     <select className="long" name="taskPriority" onChange={handleChange}>
                                         <option hidden={true} >
-                                        {`Current Priority: ${data.taskPriority}`}
+                                            {`Current Priority: ${data.taskPriority}`}
                                         </option>
                                         <option value={"High"}>High</option>
                                         <option value={"Medium"}>Medium</option>

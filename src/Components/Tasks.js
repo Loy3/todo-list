@@ -15,19 +15,14 @@ export default function Tasks() {
     const navigate = useNavigate();
 
     let list = [];
-    // let type = "all";
 
-    // var currentDate = new Date().toJSON().slice(0, 10);
     var currentDate = new Date();
 
     var current_date = currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate();
     var current_time = currentDate.getHours() + ":" + currentDate.getMinutes();
 
     var d1 = new Date(`${current_date}, ${current_time}`);
-    // vard2 = new Date(`${data.taskDueDate}, ${data.taskDueTime}`)
 
-    //  console.log(current_time + " " + current_date);
-    // /let tasks = [];
     const stringifiedList = localStorage.getItem('lists');
     if (stringifiedList === "" || stringifiedList === null) {
         localStorage.setItem('lists', JSON.stringify([]));
@@ -40,38 +35,7 @@ export default function Tasks() {
     }
 
     const userMail = JSON.parse(localStorage.getItem('userEmail'));
-    //  const [messages, setMessages] = useState([]);
 
-    /*
-    if (d1 > d2) {
-                                  setMessages((messages) => [...messages, { message: `Task: ${data.task} is over due!` }]);
-                                  data.taskPriority = "Overdue";
-                                  let d2 = new Date(`${data.taskDueDate}, ${data.taskDueTime}`)
-  */
-
-    // useEffect(() => {
-    //     for (let l = 0; l < list.length; l++) {
-    //         let d2 = new Date(`${list[l].taskDueDate}, ${list[l].taskDueTime}`)
-    //         if (d1 > d2 && userMail === list[l].userEmail && list[l].taskPriority !== "Done") {
-    //             setMessages((messages) => [...messages, { message: `Task: ${list[l].task} is over due!` }]);
-    //             list[l].taskPriority = "Overdue";
-    //         }
-    //     }
-
-    // }, [])
-
-    // list.forEach((li, index) => {
-    //     let d2 = new Date(`${li.taskDueDate}, ${li.taskDueTime}`)
-    //     if (d1 > d2) {
-    //         setMessages((messages) => [...messages, { message: `Task: ${li.task} is over due!` }]);
-    //         li.taskPriority = "Overdue";
-    //     }
-    //     console.log(messages);
-    // });
-
-    /*
-     
-    */
     //Delete from list
     function deleteTask(event, index) {
 
@@ -92,7 +56,6 @@ export default function Tasks() {
     }
     //End of update step 1
 
-    //Search task, taskDescipt, taskPriority, taskDueDate, taskDueTime
     const [searchTask, setSearchTask] = useState('');
     const [myTask, setMyTask] = useState({
         task: '',
@@ -103,29 +66,43 @@ export default function Tasks() {
     });
 
     //Search
-    const [searchedList, setSearchedList] = useState([]);
     function search() {
 
-        for (let s = 0; s < list.length; s++) {
+        // for (let s = 0; s < list.length; s++) {
 
-            if (searchTask === list[s].taskPriority && userMail === list[s].userEmail) {
-                setMyTask({
-                    task: list[s].task,
-                    taskDescipt: list[s].taskDescipt,
-                    taskPriority: list[s].taskPriority,
-                    taskDueDate: list[s].taskDueDate,
-                    taskDueTime: list[s].taskDueTime,
+        //     if (searchTask.toLowerCase() === list[s].task.toLowerCase() && userMail === list[s].userEmail) {
+        //         setMyTask({
+        //             task: list[s].task,
+        //             taskDescipt: list[s].taskDescipt,
+        //             taskPriority: list[s].taskPriority,
+        //             taskDueDate: list[s].taskDueDate,
+        //             taskDueTime: list[s].taskDueTime,
 
-                })
+        //         })
+        //         document.getElementById("all").style.display = "none";
+        //         document.getElementById("searched").style.display = "block";
 
-                setSearchedList((searchedList) => [...searchedList, { task: list[s].task, taskDescipt: list[s].taskDescipt, taskPriority: list[s].taskPriority, taskDueDate: list[s].taskDueDate, taskDueTime: list[s].taskDueTime }]);
-
+        //     }
+        // }
+        // // console.log(searchedList);
+        if (searchTask.toLowerCase() === "done") {
+            document.getElementById("all").style.display = "none";
+            document.getElementById("searched").style.display = "block";
+            setType("Done");
+        } else
+            if (searchTask.toLowerCase() === "high") {
                 document.getElementById("all").style.display = "none";
                 document.getElementById("searched").style.display = "block";
-
+                setType("High");
+            } else if (searchTask.toLowerCase() === "medium") {
+                document.getElementById("all").style.display = "none";
+                document.getElementById("searched").style.display = "block";
+                setType("Medium");
+            } else if (searchTask.toLowerCase() === "low") {
+                document.getElementById("all").style.display = "none";
+                document.getElementById("searched").style.display = "block";
+                setType("Low");
             }
-        }
-        // console.log(searchedList);
     }
     function back() {
         document.getElementById("all").style.display = "block";
@@ -166,7 +143,7 @@ export default function Tasks() {
             <div id={"all"}>
                 <div className="row" id={"filter"}>
                     <div className="column" id={"search"}>
-                        <input type="text" placeholder="Search for tasks by priority " onChange={(event) => setSearchTask(event.target.value)} />
+                        <input type="text" placeholder="Search for task " onChange={(event) => setSearchTask(event.target.value)} />
                         <button onClick={search}>Search</button>
                         <br /><br />
                     </div>
@@ -196,10 +173,10 @@ export default function Tasks() {
                     <span className="warning">If the potion is blank then that means there is no task of that Priority</span>
                 </i></p>
 
-              
+
                 <div className="row" id={"myCards"}>
-                <h1>Task: {type}</h1>
-                <br /><br />
+                    <h1>Task: {type}</h1>
+                    <br /><br />
                     {list.map((data, index) => {
 
                         if (userMail === data.userEmail) {
@@ -250,11 +227,11 @@ export default function Tasks() {
                                         </div>
                                         <div className="column" >
                                             <div className="square"></div>
-                                            {d1 < d2 && data.taskPriority === "High" ? <div className="square1"><img src={high} alt="High" width={50} /></div> : <div className="square1"><img src={overd} alt="High" width={50} /></div>}
-                                            {d1 < d2 && data.taskPriority === "Medium" ? <div className="square2"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {d1 < d2 && data.taskPriority === "Low" ? <div className="square3"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {data.taskPriority === "Done" ? <div className="square3"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square3"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
+                                            {d1 < d2 && data.taskPriority === "High" ? <div className="square"><img src={high} alt="High" width={50} /></div> : <div className="square"><img src={overd} alt="High" width={50} /></div>}
+                                            {d1 < d2 && data.taskPriority === "Medium" ? <div className="square"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
+                                            {d1 < d2 && data.taskPriority === "Low" ? <div className="square"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
+                                            {data.taskPriority === "Done" ? <div className="square"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
+                                            {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
                                         </div>
                                     </div>
 
@@ -265,60 +242,51 @@ export default function Tasks() {
                     })}
                 </div>
                 <div className="row" id={"viewbyprior"}>
-                <h1>Task: {type}</h1>
+                    <h1>Task: {type}</h1>
                     <ViewByType type={type} />
                 </div>
             </div>
 
             <div id={"searched"}>
-                <button onClick={back}>Back</button>
+
+                <h1>Task: {type}</h1>
+
                 <div className="row" id={"myCards"}>
+                    <ViewByType type={type} />
 
-                    {searchedList.map((data, index) => {
-
-                        if (userMail === data.userEmail) {
-                            let d2 = new Date(`${data.taskDueDate}, ${data.taskDueTime}`)
-
-                            return <div className="column" key={index}>
-                                <div className="card">
-
-                                    <div className="row" id={"step1"}>
-                                        <div className="column" >
-                                            {data.task}
-                                        </div>
-                                    </div>
-
-                                    <div className="row" id={"step2"}>
-                                        <div className="column">
-                                            <p>{data.taskDescipt}</p>
-                                            <p>
-                                                {data.taskPriority}
-                                                <br />
-                                                {data.taskDueTime} || {data.taskDueDate}
-                                            </p>
-                                            {d1 > d2 && data.taskPriority !== "Done" ? <div className="overdue">Overdue</div> : <div className=""></div>}
-
-
-                                        </div>
-                                        <div className="column" >
-                                            <div className="square"></div>
-                                            {d1 < d2 && data.taskPriority === "High" ? <div className="square1"><img src={high} alt="High" width={50} /></div> : <div className="square1"><img src={overd} alt="High" width={50} /></div>}
-                                            {d1 < d2 && data.taskPriority === "Medium" ? <div className="square2"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {d1 < d2 && data.taskPriority === "Low" ? <div className="square3"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {data.taskPriority === "Done" ? <div className="square3"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
-                                            {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square3"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        } return null
-                    })}
                 </div>
-
+                <button onClick={back}>Back</button>
             </div>
         </div>
     );
 
 }
+
+/*
+<div className="column" >
+    <div className="card">
+
+        <div className="row" id={"step1"}>
+            <div className="column" >
+                {myTask.task}
+            </div>
+        </div>
+
+        <div className="row" id={"step2"}>
+            <div className="column">
+                <p>{myTask.taskDescipt}</p>
+                <p>
+                    {myTask.taskPriority}
+                    <br />
+                    {myTask.taskDueTime} || {myTask.taskDueDate}
+                </p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+*/

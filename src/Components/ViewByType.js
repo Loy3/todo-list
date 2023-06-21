@@ -14,8 +14,6 @@ export default function ViewByType(props) {
     } else {
         list = JSON.parse(stringifiedList);
 
-        // list = [allUsers];
-        // console.log(list);
     }
     var currentDate = new Date();
     var current_date = currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate();
@@ -57,11 +55,11 @@ export default function ViewByType(props) {
                                 </div>
                                 <div className="column" >
                                     <div className="square"></div>
-                                    {d1 < d2 && data.taskPriority === "High" ? <div className="square1"><img src={high} alt="High" width={50} /></div> : <div className="square1"><img src={overd} alt="High" width={50} /></div>}
-                                    {d1 < d2 && data.taskPriority === "Medium" ? <div className="square2"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
-                                    {d1 < d2 && data.taskPriority === "Low" ? <div className="square3"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
-                                    {data.taskPriority === "Done" ? <div className="square3"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
-                                    {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square3"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
+                                    {d1 < d2 && data.taskPriority === "High" ? <div className="square"><img src={high} alt="High" width={50} /></div> : <div className="square"><img src={overd} alt="High" width={50} /></div>}
+                                    {d1 < d2 && data.taskPriority === "Medium" ? <div className="square"><img src={medium} alt="High" width={50} /></div> : <div className=""></div>}
+                                    {d1 < d2 && data.taskPriority === "Low" ? <div className="square"><img src={low} alt="High" width={50} /></div> : <div className=""></div>}
+                                    {data.taskPriority === "Done" ? <div className="square"><img src={done} alt="High" width={50} /></div> : <div className=""></div>}
+                                    {d1 < d2 && data.taskPriority === "Overdue" ? <div className="square"><img src={overd} alt="High" width={50} /></div> : <div className=""></div>}
                                 </div>
                             </div>
 

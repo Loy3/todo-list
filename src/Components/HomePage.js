@@ -1,44 +1,24 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import profile from "../Assets/Images/BG.png";
 import high from "../Assets/Icons/High.png";
 import medium from "../Assets/Icons/Medium.png";
 import low from "../Assets/Icons/Low.png";
-// import overd from "../Assets/Icons/Overdue.png";
 import done from "../Assets/Icons/Done.png";
 import close from "../Assets/Icons/cancel.png";
 
 import NavBar from "./NavBar";
 import Tasks from "./Tasks";
 
-// import AddNewList from "./AddNewList";
 
 export default function HomePage(props) {
 
-    const navigate = useNavigate();
-
-    const signedIn = localStorage.getItem("userStatus");
     const [userEmail, setUserEmail] = useState(JSON.parse(localStorage.getItem('userEmail')));
-    let userStat = false;
-
-    useEffect(() => {
-        if (signedIn === '' || signedIn === null) {
-            localStorage.setItem('userStatus', JSON.stringify(false))
-        } else {
-            userStat = JSON.parse(signedIn);
-        }
-
-        if (userStat === false) {
-            navigate("/");
-        }
-    }, [signedIn, userStat])
-
+   
     let allUsers = [];
     const stringifiedUser = localStorage.getItem('user');
     if (stringifiedUser === "" || stringifiedUser === null) {
         localStorage.setItem('user', JSON.stringify([]));
-        // navigate("/");
     } else {
         allUsers = JSON.parse(stringifiedUser);
         allUsers = [allUsers];
@@ -48,7 +28,6 @@ export default function HomePage(props) {
     const stringifiedList = localStorage.getItem('lists');
     if (stringifiedList === "" || stringifiedList === null) {
         localStorage.setItem('lists', JSON.stringify([]));
-        // navigate("/");
     } else {
         list = JSON.parse(stringifiedList);
     }
@@ -83,10 +62,7 @@ export default function HomePage(props) {
     const [taskDueTime, setTaskDueTime] = useState('');
 
     function addNewList() {
-        //setUserEmail(allUsers[0].userEmail)
-
-        // console.log(allUsers[0].userEmail);
-        // setEmpIdNumber(empIdNumber + 1);
+        
         props.addNewList(task, taskDescipt, taskPriority, taskDueDate, taskDueTime, userEmail);
         document.getElementById("taskForm").reset();
 
