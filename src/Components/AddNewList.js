@@ -70,8 +70,7 @@ export default function AddNewList(props) {
                     <option value={"High"}>High</option>
                     <option value={"Medium"}>Medium</option>
                     <option value={"Low"}>Low</option>
-
-
+                    
                 </select>
                 <br />
                 <label>Task Description</label>

@@ -14,7 +14,9 @@ h3 {
 }
 
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 13px 10px;
   margin: 10px 0px;
   outline: none;
@@ -22,11 +24,12 @@ input, select, textarea {
   background-color: transparent;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: black;
 }
 
-select{
+select {
   width: 175px;
   margin-left: 3px;
 }
@@ -54,13 +57,13 @@ button:hover {
 }
 
 .small {
-  width: 182.5px;
+  width: 180px;
   margin-right: 5px;
 }
 
 .long {
   width: 390px;
-  margin-left: -7px;
+  margin-left: 0px;
 }
 
 
@@ -83,17 +86,7 @@ button:hover {
 
 /*Sign Up*/
 .signup {
-  /* background-image: url("./Assets/Images/BG2.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100%; */
-  /* position: fixed; */
-  /* 
-  display: flex;
-  justify-content: center;
-  align-items: center; */
+
   padding: 0;
   margin: 0;
 }
@@ -122,31 +115,17 @@ button:hover {
   position: absolute;
   color: black;
   width: 450px;
-  /* height: 500px; */
-  text-align: center;
-  /* height: auto; */
-  /* padding: 10px; */
-
-  margin-top: 130px;
-
 
 }
 
-#center {
+.align-To-center {
+  padding: 0px;
   display: flex;
   justify-content: center;
-  margin-top: 0px;
+  align-items: center;
+
+  margin-top: 50vh;
 }
-
-/* .bgBlock {
-  width: 100%;
-  padding: 40px;
-  background-color: #1d1d1d;
-  opacity: 0.8;
-
-  text-align: center;
-  height: 87vh;
-} */
 
 .signup h3 {
   font-size: 16px;
@@ -205,7 +184,7 @@ button:hover {
   cursor: pointer;
   position: absolute;
   width: 25px;
-  right: 35px;
+  right: 55px;
   top: 20px;
 }
 
@@ -220,94 +199,18 @@ button:hover {
 /*end of add list*/
 
 
-/* media */
-
-@media screen and (max-width: 700px) {
-
-  button {
-    width: 420px;
-    padding: 10px;
-    background-color: #181818;
-    color: white;
-    border: none;
-    outline: none;
-
-    cursor: pointer;
-  }
-
-
-
-  .small {
-    width: 100%;
-    margin-right: 0px;
-  }
-
-  .long {
-    width: 100%;
-    margin-left: -7px;
-  }
-
-  /*Sign up*/
-  .nav {
-    padding: 20px 30px;
-    margin: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  .signup {
-    padding: 10px 50px;
-  }
-
-  .signup h1 {
-    font-size: 23px;
-  }
-
-
-  .signup .column:first-child {
-    width: 100%;
-    color: black;
-  }
-
-  .signup .column:not(:first-child) {
-    width: 100%;
-    bottom: 0;
-  }
-
-  #bg {
-
-    height: 10vh;
-    position: fixed;
-    bottom: 0 !important;
-    left: 0;
-    top: 90%;
-  }
-
-
-  .signup-form {
-    position: relative;
-    width: 100%;
-
-  }
-
-  /*Sign up*/
-}
-
-/* end of media */
-
 
 /*Nav*/
 nav {
   padding: 0;
   margin: 5px 0;
-  z-index: 1;
+  /* z-index: 1; */
   top: 0;
   width: 100%;
   font-family: 'Kumbh Sans', sans-serif;
 
   position: absolute;
-  z-index: 99;
+  z-index: 1;
 }
 
 .nav-wrap {
@@ -469,26 +372,26 @@ header {
 
 .bgBlock {
   width: 100%;
-  padding: 40px;
   background-color: #1b1b1b;
   opacity: 0.8;
 
   text-align: center;
-  height: 74%;
+  height: 50vh;
 }
 
 .profile {
   background-color: #fff;
-  height: 800px;
+  height: auto;
   width: 300px;
 
   position: absolute;
   z-index: 1;
-  top: 200px;
+  top: 230px;
   left: 40px;
 
   padding: 30px;
   box-shadow: 5px 10px 20px #161515;
+  border-radius: 1em;
 }
 
 .profile img {
@@ -504,38 +407,67 @@ header {
 
 .prior img {
   border-radius: 0;
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
+}
+
+
+.profile .column {
+  width: 100%;
+  padding: 0 0 30px 0;
+}
+
+.profile button {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.spacing {
+  padding-left: 20px;
 }
 
 /*End of header*/
 
 
 /* Add */
-.wrap{
+.wrap {
   padding: 50px;
 }
 
-.form{
+.form {
   background-color: #1b1b1b;
 
 }
 
 
 .box {
-  background-color: #fcf9ee;
-  top: 20px;
-  width:auto;
-  height: 500px;
+  background-color: #f8f8f8;
+  /* top: 20px; */
+  width: auto;
   position: fixed;
   z-index: 99;
-  padding: 30px;
+  padding: 50px;
 }
 
+.box img {
+  cursor: pointer;
+  width: 20px;
+  float: right;
 
-#popup {
+}
+
+.box img:hover {
+  filter: drop-shadow(5px 5px 5px #ff0101);
+}
+
+#popup,
+#popup2 {
   display: none;
   height: 90%;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 
 }
 
@@ -543,7 +475,7 @@ header {
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   background-color: rgba(19, 19, 19, 0.788);
@@ -555,7 +487,7 @@ header {
 
   display: flex;
   justify-content: center;
-  /*align-items: center;*/
+  align-items: center;
 
 }
 
@@ -580,5 +512,560 @@ header {
   margin-left: 50px;
 }
 
+#popup .long {
+  margin-left: 2px;
+  padding: 20px 10px;
+}
+
 
 /* End of add */
+
+/*Home*/
+.home .wrap {
+  margin-left: 30%;
+  padding: 50px 30px;
+}
+
+.displayTasks {
+  margin-top: 50px;
+}
+
+.displayTasks h1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  position: relative;
+}
+
+.displayTasks span {
+  font-size: 16px;
+  padding: 0 10px;
+  margin-top: 10px !important;
+  position: absolute;
+}
+
+.displayTasks span:first-child {
+  font-size: 16px;
+  padding: 30px 10px;
+  margin-top: 20px !important;
+  position: relative;
+}
+
+.displayTasks #myCards {
+  display: block;
+  margin: 80px 0px 30px 0;
+}
+
+.displayTasks #viewbyprior {
+  display: none;
+  margin: 80px 0px;
+}
+
+.displayTasks #myCards2 {
+  display: none;
+  margin: 80px 0px;
+}
+
+.displayTasks .column {
+  width: 31%;
+  padding: 0 15px 30px 0;
+}
+
+.displayTasks td {
+  padding: 5px 0px;
+}
+
+.displayTasks .card {
+  position: relative;
+  height: 200px;
+  width: 92%;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 5px 10px 20px #161515;
+}
+
+.overdue {
+  color: #ff0101;
+}
+
+#step1 .column:first-child {
+  padding-top: 20px;
+  width: 60% !important;
+}
+
+#step1 .column:not(:first-child) {
+  width: 40% !important;
+}
+
+
+#step2 .column {
+  width: 100%;
+  padding: 0px;
+}
+
+#step1,
+#step2 {
+  width: 100%;
+}
+
+#align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card .row {
+  margin: 0;
+}
+
+.card .column {
+  padding: 0;
+}
+
+.card button {
+  width: auto;
+  padding: 5px;
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.card button:hover {
+  text-align: right;
+  background-color: #f8f8f8;
+  border: 2px solid #181818;
+}
+
+.square {
+  position: absolute;
+  bottom: -10px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+
+.card h4 {
+  font-size: 15px;
+}
+
+.displayTasks h3 {
+  text-align: left;
+}
+
+#filter .column:first-child {
+  width: 100%;
+  padding: 10px;
+
+}
+
+#filter .column {
+  width: 20%;
+  padding: 10px;
+
+}
+
+.warning {
+  font-size: 11px !important;
+  color: #7e7e7e;
+  padding: 0;
+  margin-top: 5px !important;
+  position: unset;
+}
+
+#filter input {
+  width: 200px;
+}
+
+
+#filter button {
+  width: 150px;
+  height: 43px;
+  padding: 10px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#searched {
+  display: none;
+}
+
+
+
+#all {
+  display: block;
+}
+
+/*End of home*/
+
+/*Update*/
+.return {
+  margin: 30px;
+}
+
+.return img {
+  cursor: pointer;
+  width: 40px;
+}
+
+.return img:hover {
+  filter: drop-shadow(5px 5px 5px #000000);
+}
+
+.task {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task h1 {
+  font-size: 35px;
+}
+
+.task form {
+  margin-top: 50px;
+}
+
+.task .long {
+
+  margin-left: 0px;
+}
+
+.update .column:first-child {
+  width: 60%;
+}
+
+.update .column:not(:first-child) {
+  width: 40%;
+}
+
+.update #bG {
+  background-image: url("./Assets/Images/BG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+.update .bgBlock {
+  width: 100%;
+  background-color: #1b1b1b;
+  opacity: 0.7;
+
+  text-align: center;
+  height: 100vh;
+}
+
+.bgText {
+  position: absolute;
+  color: white;
+  width: 100%;
+  padding: 50px;
+}
+
+.bgText button {
+  width: 150px;
+}
+
+/* End of update */
+
+
+
+
+
+/* media */
+
+@media screen and (max-width: 700px) {
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #181818;
+    color: white;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+  }
+
+  .topnav h1 {
+    padding-top: 15px;
+    font-size: 26px !important;
+  }
+
+
+  .small {
+    margin: 10px 0px;
+  }
+
+  input {
+    width: 94% !important;
+    margin: 10px;
+  }
+
+  .long {
+    margin-left: 0px;
+  }
+
+
+  /*Sign up*/
+  .nav {
+    padding: 20px 30px;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .signup {
+    padding: 10px;
+  }
+
+  .signup h1 {
+    font-size: 23px;
+  }
+
+
+  .signup .column:first-child {
+    width: 100%;
+    color: black;
+  }
+
+  .signup .column:not(:first-child) {
+    width: 100%;
+    bottom: 0;
+  }
+
+  .myPassword img {
+    right: 15px;
+  }
+
+  #bg {
+    display: none;
+
+  }
+
+  #signin .column:not(:first-child) {
+    float: none;
+    position: fixed;
+    top: 0;
+  }
+
+  .signup-form {
+    position: relative;
+    width: 100%;
+
+  }
+
+  .align-To-center {
+    margin-top: 15vh;
+    padding: 30px;
+    justify-content: flex-start;
+  }
+
+  /*Sign up*/
+
+  /*Header*/
+  header {
+    height: 55vh;
+  }
+
+  .bgBlock {
+    width: 100%;
+    background-color: #1b1b1b;
+    opacity: 0.8;
+
+    text-align: center;
+    height: 55vh;
+  }
+
+  .profile {
+    height: 250px;
+    width: 85%;
+    top: 130px;
+    left: 10px;
+    padding: 20px;
+  }
+
+  .profile img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .profile h1,
+  .profile h2,
+  .profile h3 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .profile h1 {
+    font-size: 26px;
+    margin-left: -60px;
+    padding-top: 30px;
+  }
+
+  .profile h2 {
+    font-size: 20px;
+  }
+
+  .prior img {
+    border-radius: 0;
+    height: 30px;
+    width: 30px;
+  }
+
+  .profile #columnLong {
+    width: 95%;
+  }
+
+  .profile .column {
+    width: 45%;
+    padding: 0 0 10px 0;
+  }
+
+  .spacing {
+    padding-left: 20px;
+  }
+
+  /*End of heade*/
+
+  /*Home*/
+  .home .wrap {
+    margin-left: 0;
+    padding: 50px 30px;
+  }
+
+  .home button {
+    width: 100%;
+  }
+
+
+  .displayTasks {
+    margin-top: 50px;
+  }
+
+  .displayTasks h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+  }
+
+  .displayTasks .column {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+
+  #filter input {
+    width: 200px !important;
+    margin: 0;
+  }
+
+  .box {
+    background-color: #f8f8f8;
+    /* top: 20px; */
+    width: auto;
+    position: fixed;
+    z-index: 99;
+    margin: 0px;
+  }
+
+  .box textarea {
+    width: 94%;
+  }
+
+  .mypopup {
+    align-items: flex-end;
+  }
+
+  /*end of home*/
+
+  /*Update*/
+  .update .column:first-child {
+    width: 100%;
+  }
+
+  .update .column:not(:first-child) {
+    width: 100%
+  }
+
+
+  .update #bG {
+    background-image: url("./Assets/Images/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30vh;
+    position: unset;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+
+  .update .bgBlock {
+    width: 100%;
+    background-color: #1b1b1b;
+    opacity: 0.7;
+
+    text-align: center;
+    height: 100%;
+  }
+
+  .bgText {
+    position: absolute;
+    color: white;
+    width: 90%;
+    padding: 20px;
+  }
+
+
+  .task {
+    padding: 10px !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .task textarea {
+    width: 95% !important;
+  }
+
+  .task .long {
+    width: 100%;
+  }
+
+  .myForm {
+    padding: 30px;
+  }
+
+  #filter button {
+    width: 100px !important;
+  }
+
+
+  #filter .column {
+    width: 40%;
+    margin-bottom: 20px;
+  }
+
+}
+
+/* end of media */

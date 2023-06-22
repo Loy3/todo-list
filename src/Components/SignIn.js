@@ -18,13 +18,13 @@ export default function SignIn({ setSignIn }) {
 
 
     let allUsers = [];
-    const stringifiedUser = localStorage.getItem('user');
+    const stringifiedUser = localStorage.getItem('users');
     if (stringifiedUser === "" || stringifiedUser === null) {
-        localStorage.setItem('user', JSON.stringify([]));
-        // navigate("/");
+        localStorage.setItem('users', JSON.stringify([]));
+        navigate("/signUp");
     } else {
         allUsers = JSON.parse(stringifiedUser);
-        allUsers = [allUsers];
+        // allUsers = [allUsers];
     }
 
 
@@ -32,10 +32,12 @@ export default function SignIn({ setSignIn }) {
     function signInUser() {
         console.log(allUsers);
         for (let u = 0; u < allUsers.length; u++) {
-            if (userEmail === allUsers[u].userEmail && password == allUsers[u].password) {
+            if (userEmail === allUsers[u].userEmail && password === allUsers[u].password) {
                 setSignIn(true);
                 localStorage.setItem('userStatus', JSON.stringify(true));
-                navigate('/home')
+                localStorage.setItem('userEmail', JSON.stringify(allUsers[u].userEmail));
+                localStorage.setItem('user', JSON.stringify(allUsers[u]));
+                navigate('/')
             }
         }
 
@@ -46,42 +48,44 @@ export default function SignIn({ setSignIn }) {
     }
 
     return (
-        <div className="signup">
+        <div className="signup" id={"signin"}>
 
             <div className="row">
                 <div className="column" id={"center"}>
                     <div className="nav">
                         <img src={logo} alt="logo" />
                     </div>
-                    <div className="signup-form">
+                    <div className="align-To-center">
+                        <div className="signup-form">
 
 
-                        <h1>Sign Up to Create an Account</h1>
-                        <h3 className="gray">This is the first step to your list.</h3>
+                            <h1 align="center">Welcome back!</h1>
+                            <h3 className="gray">Sign in to your account.</h3>
 
-                        <br />
+                            <br />
 
 
-                        <input type="email" className="long" placeholder="Email Address" onChange={(event) => setUserEmail(event.target.value)} />
-                        <br />
-                        <div className="myPassword">
-                            <input type={showHidePassword ? "text" : "password"} className="long" placeholder={showHidePassword ? "Enter Password" : "* * * * * * * * * *"} onChange={(event) => setPassword(event.target.value)} />
-                            <img
-                                title={showHidePassword ? "Hide password" : "Show password"}
-                                src={showHidePassword ? show : hide}
-                                onClick={() => setShowHidePassword(prevState => !prevState)}
+                            <input type="email" className="long" placeholder="Email Address" onChange={(event) => setUserEmail(event.target.value)} />
+                            <br />
+                            <div className="myPassword">
+                                <input type={showHidePassword ? "text" : "password"} className="long" placeholder={showHidePassword ? "Enter Password" : "* * * * * * * * * *"} onChange={(event) => setPassword(event.target.value)} />
+                                <img
+                                    title={showHidePassword ? "Hide password" : "Show password"}
+                                    src={showHidePassword ? show : hide}
+                                    onClick={() => setShowHidePassword(prevState => !prevState)}
 
-                                alt="Hide"
-                            />
+                                    alt="Hide"
+                                />
+                            </div>
+
+                            <br />
+                            <br />
+                            <button onClick={signInUser}>Sign In</button>
+
+                            <br />
+                            <br />
+                            <h3>Don't have an account? <a onClick={toSignUp}>Sign Up</a></h3>
                         </div>
-
-                        <br />
-                        <br />
-                        <button onClick={signInUser}>Add Employee</button>
-
-                        <br />
-                        <br />
-                        <h3>Don't have an account? <a onClick={toSignUp}>Sign Up</a></h3>
                     </div>
 
                 </div>
